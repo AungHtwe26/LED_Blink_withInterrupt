@@ -5,16 +5,15 @@ Calculations (for 500ms):
   Timer 1 speed = 16Mhz/256 = 62.5 Khz    
   Pulse time = 1/62.5 Khz =  16us  
   Count up to = 500ms / 16us = 31250 (so this is the value the OCR register should have)*/  
-int currentState =0;
-int previousState=0;
-int pin = 0;
-int interval=1;
-int digit[]={2,3,4,5,6};
-void setup() {
-  
-  for ( int i=0; i<5 ; i++){    //set OUTPUT pin
+int currentState  = 0;
+int previousState = 0;
+int pin           = 0;
+int interval      = 1;
+int digit[]={2,3,4,5,6,7};
+void setup(){ 
+  for ( int i=0; i<6 ; i++){    //set OUTPUT pin
   pinMode(digit[i],OUTPUT);
-   } 
+  } 
    
   cli();                      //stop interrupts for till we make the settings
   /*1. First we reset the control register to amke sure we start with everything disabled.*/
@@ -35,11 +34,11 @@ void loop() {
     interval++;
     digitalWrite(digit[pin],LOW);
     pin++;
-    if(pin>4){
+    if(pin>5){
             interval=1;
             pin=0;
-   }
-  }else{
+    }
+   }else{
     digitalWrite(digit[pin],HIGH);
   }
 }
