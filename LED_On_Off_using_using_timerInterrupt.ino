@@ -9,9 +9,9 @@ int currentState  = 0;
 int previousState = 0;
 int pin           = 0;
 int interval      = 1;
-int digit[]={2,3,4,5,6,7};
+int digit[]={2,3,4,5,6,7,8};
 void setup(){ 
-  for ( int i=0; i<6 ; i++){    //set OUTPUT pin
+  for ( int i=0; i<7 ; i++){    //set OUTPUT pin
   pinMode(digit[i],OUTPUT);
   } 
    
@@ -34,7 +34,7 @@ void loop() {
     interval++;
     digitalWrite(digit[pin],LOW);
     pin++;
-    if(pin>5){
+    if(pin>7){
             interval=1;
             pin=0;
     }
